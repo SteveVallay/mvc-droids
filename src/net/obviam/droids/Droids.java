@@ -13,6 +13,8 @@ public class Droids extends Applet implements Runnable {
 	private static final long serialVersionUID = -2472397668493332423L;
 	
 	private GameEngine engine = new GameEngine();
+    private static final int HEIGHT = 480;
+    private static final int WIDTH = 320;
 
 	public void start() {
 		new Thread(this).start();
@@ -20,10 +22,10 @@ public class Droids extends Applet implements Runnable {
 
 	public void run() {
 		
-		setSize(480, 320); // For AppletViewer, remove later.
+		setSizea(HEIGHT, WIDTH);
 
 		// Set up the graphics stuff, double-buffering.
-		BufferedImage screen = new BufferedImage(480, 320, BufferedImage.TYPE_INT_RGB);
+		BufferedImage screen = new BufferedImage(HEIGHT, WIDTH, BufferedImage.TYPE_INT_RGB);
 		Graphics g = screen.getGraphics();
 		Graphics appletGraphics = getGraphics();
 
@@ -34,7 +36,7 @@ public class Droids extends Applet implements Runnable {
 			long lastTime = System.nanoTime();
 
 			g.setColor(Color.black);
-			g.fillRect(0, 0, 480, 320);
+			g.fillRect(0, 0, HEIGHT, WIDTH);
 
 			// Update the state (convert to seconds)
 			engine.update((float)(delta / 1000000000.0));
